@@ -1,8 +1,8 @@
 @import "../../utility-styles/main.scss";
 
+
 .container {
-  background:
-    url(../../assets/images/sneaker-7.jpg) no-repeat fixed;
+   background: url(../../assets/images/sneaker-7.jpg) no-repeat fixed;
   background-size: cover;
   background-position: center;
 }
@@ -11,7 +11,7 @@
   font-family: "Raleway", sans-serif;
   @include flex-between;
   padding: 0 6%;
-  margin-top: 1.7rem;
+  margin-top: 1rem;
 }
 
 .left {

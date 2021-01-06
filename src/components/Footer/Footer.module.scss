@@ -1,0 +1,38 @@
+
+@import '../../utility-styles/main.scss';
+
+
+.container {
+    padding: 8rem 6%;
+//   background: rgba(230, 210, 57, 0.707);
+// background: rgba(236, 214, 48, 0.679);
+// background: rgba(236, 214, 48, 0.734);
+// background: rgba(236, 214, 48, 0.789);
+ background: rgba(252, 229, 55, 0.72);
+    @include flex-between;
+    & * {
+        color: $color-grey-dark-4;   
+    }
+}
+
+
+.sections {
+    min-height: 8rem;
+    min-width: 8rem;
+}
+
+.linksHeading {
+    color: $color-grey-dark-4;
+    font-size: 1.4rem;
+    letter-spacing: .5rem;
+    margin-bottom: 1.6rem;
+}
+.linksText {
+    font-family: "Raleway", sans-serif;
+    font-size: .8rem;
+    letter-spacing: .2rem;
+    font-weight: 600;
+    &:not(:last-of-type) {
+        margin-bottom: 1.2rem;
+    }
+}

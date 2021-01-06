@@ -16,14 +16,15 @@ import "./App.scss";
 
 */
 
-import Hero from './Hero/Hero'
+import Hero from './Hero/Hero';
+import Footer from './Footer/Footer';
 
 function App() {
   return (
       <BrowserRouter>
 
         <Hero />
-
+        <Footer />
       </BrowserRouter>
   );
 }
