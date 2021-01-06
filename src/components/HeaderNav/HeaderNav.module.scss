@@ -1,0 +1,53 @@
+@import "../../utility-styles/main.scss";
+
+.nav {
+  background: transparent; // #34e6aa; #3ba55a;
+  height: 6rem;
+  width: 100%;
+  padding: 0 6%;
+  position: sticky;
+  top: 0;
+  // color: $color-grey-light;
+  @include flex-between;
+  @include responsive(1280px) {
+    height: 6.3rem;
+  }
+
+  // CLASSLISTS
+
+  &.fixed {
+    background: green;
+    color: $color-white;
+    height: 5.3;
+  }
+}
+
+
+
+.logo {
+  font-size: 1.8rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.16rem;
+}
+
+.logo4 {
+  font-size: 1.4em;
+  font-weight: 500;
+  color: $color-primary-2;
+}
+
+
+
+.linksContainer {
+  @include flex-between;
+  font-size: 1.12rem;
+  color: $color-grey-light-4;
+}
+
+.links {
+  color: inherit;
+  &:not(:first-child) {
+    margin-left: 1.8rem;
+  }
+}

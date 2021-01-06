@@ -1,0 +1,53 @@
+@import "../../utility-styles/main.scss";
+
+.container {
+  background:
+    url(../../assets/images/sneaker-7.jpg) no-repeat fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.header {
+  font-family: "Raleway", sans-serif;
+  @include flex-between;
+  padding: 0 6%;
+  margin-top: 1.7rem;
+}
+
+.left {
+  height: 100%;
+  flex: 0 0 45%;
+}
+
+.h1 {
+  font-size: 4.4rem;
+  width: 80%;
+  letter-spacing: 0.5rem;
+  line-height: 1.5;
+  font-weight: 800;  
+  color: $color-grey-light-2;
+}
+.h3 {
+  font-size: 1.3rem;
+  letter-spacing: 0.3rem;
+  margin: 1.2rem 0 2.2rem;
+  font-weight: 600;
+  line-height: 1.7;
+  color: $color-grey-dark-3;
+}
+
+.btn {
+  margin-bottom: 4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 2.3rem;
+  color: $color-grey-light;
+  background: $color-primary-2;
+  border-radius: 4px;
+  @include responsive(350px) {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+// LEFT
