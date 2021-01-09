@@ -3,13 +3,13 @@ import React from 'react'
 
 import styles from './Hero.module.scss';
 
-import HeaderNav from '../HeaderNav/HeaderNav'
+import HeaderNav from '../HeaderNav/HeaderNav';
 
 
 export default function Hero() {
     return (
         <section className={styles.container}>
-            <HeaderNav />
+            <HeaderNav reveal={true}/>
             
             <header className={styles.header}>
 

@@ -4,21 +4,21 @@ import { Link } from 'react-router-dom';
 
 import styles from './HeaderNav.module.scss';
 
-export default function HeaderNav() {
-    return (
-        <nav className={styles.nav}>
+export default function HeaderNav({ reveal }) {
+
+    {
+        return reveal && <nav className={styles.nav}>
 
             <Link to='/' className={styles.logo}>
                 Sneakers
-            <span className={styles.logo4}>4</span>
-            u
-            </Link>
-
+    <span className={styles.logo4}>4</span>
+    u
+    </Link>
 
 
             <ul className={styles.linksContainer}>
 
-            <li className={styles.links}>
+                <li className={styles.links}>
                     <Link to='/'>Home</Link>
                 </li>
 
@@ -29,11 +29,11 @@ export default function HeaderNav() {
 
                 <li className={styles.links}>
                     {/* Once cliked should bring a page 
-                            for login(With email or google/fb) OR
-                            for Register (With email or google/fb)
-                     
-                        Once logged in. it should show the person's name. else Show login
-                     */}
+                    for login(With email or google/fb) OR
+                    for Register (With email or google/fb)
+             
+                Once logged in. it should show the person's name. else Show login
+             */}
                     <Link to='/'>Login</Link>
                 </li>
 
@@ -43,9 +43,9 @@ export default function HeaderNav() {
 
 
                 {/* <li>
-                    <Link to='/' component={Link}>Admin &#9660;</Link>
-                </li> */}
+            <Link to='/' component={Link}>Admin &#9660;</Link>
+        </li> */}
             </ul>
         </nav>
-    )
+    };
 }

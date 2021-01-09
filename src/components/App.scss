@@ -12,6 +12,10 @@
   letter-spacing: 1px;
   color: $color-grey-dark-4;
 }
+::selection {
+  background:rgba(252, 229, 55, 0.72);
+}
+
 
 html {
   font-size: 81.25%; //12px == 1rem
@@ -24,8 +28,6 @@ html {
     font-size: 62.5%;
   }
 }
-
-//  font-family: "Raleway", sans-serif;
 
 body {
   font-family: "Source Code Pro", monospace;

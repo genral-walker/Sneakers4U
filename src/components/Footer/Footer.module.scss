@@ -1,38 +1,67 @@
+@import "../../utility-styles/main.scss";
 
-@import '../../utility-styles/main.scss';
-
-
-.container {
-    padding: 8rem 6%;
-//   background: rgba(230, 210, 57, 0.707);
-// background: rgba(236, 214, 48, 0.679);
-// background: rgba(236, 214, 48, 0.734);
-// background: rgba(236, 214, 48, 0.789);
- background: rgba(252, 229, 55, 0.72);
-    @include flex-between;
-    & * {
-        color: $color-grey-dark-4;   
-    }
+.footer {
+  padding: 6rem 6% 3rem;
+  //   background: rgba(230, 210, 57, 0.707);
+  // background: rgba(236, 214, 48, 0.679);
+  // background: rgba(236, 214, 48, 0.734);
+  // background: rgba(236, 214, 48, 0.789);
+  background: rgba(252, 229, 55, 0.72);
+  & * {
+    font-family: "Raleway", sans-serif;
+    color: $color-grey-dark-4;
+  }
 }
 
+.container {
+  @include flex-between;
+}
 
 .sections {
-    min-height: 8rem;
-    min-width: 8rem;
 }
 
 .linksHeading {
-    color: $color-grey-dark-4;
-    font-size: 1.4rem;
-    letter-spacing: .5rem;
-    margin-bottom: 1.6rem;
+  color: $color-grey-dark-3;
+  font-size: 1.1rem;
+  letter-spacing: 0.3rem;
+  margin-bottom: 1.7rem;
 }
+.linksText, .mobileLink {
+  font-size: 0.74rem;
+  letter-spacing: 0.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .2s;
+  @include responsive(hover) {
+      color: $color-grey-dark-2;
+  }
+}
+
 .linksText {
-    font-family: "Raleway", sans-serif;
-    font-size: .8rem;
-    letter-spacing: .2rem;
-    font-weight: 600;
-    &:not(:last-of-type) {
-        margin-bottom: 1.2rem;
+ &:not(:last-of-type) {
+    margin-bottom: 1.2rem;
+  }
+}
+
+
+.mobileLinks {
+  @include flex-between;
+  display: none;
+}
+
+.mobileLink {
+
+}
+
+.copyright {
+    @include flex-center; 
+    padding-top: 5rem;
+    p {
+    
+  font-family: "Source Code Pro", monospace;
+  
+    font-size: .87rem;
+    letter-spacing: 0.2rem;
     }
 }
+

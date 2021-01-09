@@ -1,13 +1,13 @@
 @import "../../utility-styles/main.scss";
 
 .nav {
-  background: transparent; // #34e6aa; #3ba55a;
+  background: transparent;
   height: 6rem;
   width: 100%;
   padding: 0 6%;
   position: sticky;
   top: 0;
-  // color: $color-grey-light;
+  z-index: 1000;
   @include flex-between;
   @include responsive(1280px) {
     height: 6.3rem;
@@ -16,7 +16,7 @@
   // CLASSLISTS
 
   &.fixed {
-    background: green;
+    background: initial;
     color: $color-white;
     height: 5.3;
   }

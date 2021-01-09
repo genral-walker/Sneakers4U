@@ -38,11 +38,13 @@
 
 .btn {
   margin-bottom: 4rem;
-  font-size: 1rem;
+  font-size: .96rem;
   font-weight: 600;
-  padding: 1rem 2.3rem;
+  padding: 1rem 2.2rem;
   color: $color-grey-light;
-  background: $color-primary-2;
+   background: $color-primary-2;
+  // background: rgb(122, 45, 3);
+  
   border-radius: 4px;
   @include responsive(350px) {
     padding-top: 2rem;

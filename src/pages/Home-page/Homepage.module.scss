@@ -1,0 +1,36 @@
+@import "../../utility-styles/main.scss";
+
+.featured {
+  margin: 7rem 6%;
+}
+
+.featuredIntro {
+  text-align: center;
+
+  p {
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    color: $color-grey-dark;
+  }
+}
+
+
+.featuredItems {
+    margin-top: 4rem;
+}
+
+.categoryItems {
+    @include flex-between;
+    flex-wrap: wrap;
+    
+    &:not(:last-of-type) {
+    margin-bottom: 5rem;
+    }
+
+    div {
+        height: 30rem;
+        flex: 0 0 22.5%;
+        border: 1px solid green;
+    }
+}

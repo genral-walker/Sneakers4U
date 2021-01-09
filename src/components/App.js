@@ -16,14 +16,17 @@ import "./App.scss";
 
 */
 
-import Hero from './Hero/Hero';
+import HeaderNav from './HeaderNav/HeaderNav';
+import Homepage from '../pages/Home-page/Homepage';
 import Footer from './Footer/Footer';
 
 function App() {
   return (
       <BrowserRouter>
+        <HeaderNav reveal={false}/>
 
-        <Hero />
+        <Homepage />
+        
         <Footer />
       </BrowserRouter>
   );
