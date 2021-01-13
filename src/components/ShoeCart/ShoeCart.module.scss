@@ -1,0 +1,43 @@
+@import "../../utility-styles/main.scss";
+
+.cover {
+  height: 27rem;
+  flex: 0 0 22.7%;
+  border-radius: 10px;
+  background: $color-white;
+  position: relative;
+  padding: 0 0 3%;
+  margin-top: 2.5rem;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 5%;
+    bottom: 15px;
+    width: 49%;
+    z-index: -1;
+  }
+
+  &::before {
+    left: 7px;
+    box-shadow: 0 10px 40px rgba(158, 145, 145, 0.582);
+  }
+
+  &::after {
+    right: 7px;
+    box-shadow: 0 10px 40px rgba(158, 145, 145, 0.582);
+  }
+}
+
+.shoePix {
+  height: 60%;
+  border-bottom: 1px solid $color-black;
+  @include flex-center;
+
+
+  img {
+    width: 90%;
+    height: 88%;
+  }
+}

@@ -20,6 +20,32 @@ import HeaderNav from './HeaderNav/HeaderNav';
 import Homepage from '../pages/Home-page/Homepage';
 import Footer from './Footer/Footer';
 
+/*
+    Check Count.
+
+    "ASICS",
+    "CONVERSE",
+    "JORDAN",
+    "NEW BALANCE",
+    "NIKE",
+    "OTHER",
+    "PUMA",
+    "REEBOK",
+    "SAUCONY",
+    "UNDER ARMOUR",
+    "VANS",
+    "YEEZY",
+    "ADIDAS"
+
+    "CHILD",
+    "INFANT",
+    "MEN",
+    "PRESCHOOL",
+    "TODDLER",
+    "UNISEX",
+    "WOMEN"
+*/ 
+
 function App() {
   return (
       <BrowserRouter>
