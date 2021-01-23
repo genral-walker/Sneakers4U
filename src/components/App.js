@@ -20,6 +20,8 @@ import HeaderNav from './HeaderNav/HeaderNav';
 import Homepage from '../pages/Home-page/Homepage';
 import Footer from './Footer/Footer';
 
+const AwayPage = ()=> <div>THis is an away Page!!!!</div>;
+
 /*
     Check Count.
 
@@ -51,7 +53,10 @@ function App() {
       <BrowserRouter>
         <HeaderNav reveal={false}/>
 
-        <Homepage />
+        <Switch>
+          <Route path='/' exact component= {Homepage} />
+          <Route path='/away' exact component={AwayPage} />
+        </Switch>
         
         <Footer />
       </BrowserRouter>

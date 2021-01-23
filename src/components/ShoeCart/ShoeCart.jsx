@@ -15,15 +15,14 @@ import shoe from '../../assets/images/shoe-5.png';
 
 */
 
-export default function ShoeCart({smallImageUrl}) {
 
-    console.log(smallImageUrl);
+export default function ShoeCart({smallImageUrl}) {
 
     return (
         <div className={styles.cover}>
         <div className={styles.shoePix}>
      
-            <img src={smallImageUrl? smallImageUrl : shoe} alt='Sneaker Catalogue Shoe Picture'/>
+            <img src={smallImageUrl ? smallImageUrl : shoe} alt='Sneaker Catalogue Shoe Picture'/>
         </div>
         
         </div>

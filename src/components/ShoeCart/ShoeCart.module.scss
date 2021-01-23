@@ -2,7 +2,7 @@
 
 .cover {
   height: 27rem;
-  flex: 0 0 22.7%;
+  flex: 0 0 23%;
   border-radius: 10px;
   background: $color-white;
   position: relative;
@@ -13,20 +13,20 @@
   &::after {
     content: "";
     position: absolute;
-    top: 5%;
-    bottom: 15px;
+    top: 2%;
+    bottom: 16px;
     width: 49%;
     z-index: -1;
   }
 
   &::before {
     left: 7px;
-    box-shadow: 0 10px 40px rgba(158, 145, 145, 0.582);
+    box-shadow: 0 10px 20px rgba(158, 145, 145, 0.582);
   }
 
   &::after {
     right: 7px;
-    box-shadow: 0 10px 40px rgba(158, 145, 145, 0.582);
+    box-shadow: 0 10px 20px rgba(158, 145, 145, 0.582);
   }
 }
 
