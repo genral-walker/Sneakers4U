@@ -39,41 +39,40 @@ export default function Homepage() {
     useEffect(() => {
         const sneakers = ['JORDAN', 'NIKE', 'PUMA', 'VANS', 'CONVERSE', 'REEBOK', 'ASICS', 'ADIDAS', 'NEW BALANCE', 'SAUCONY', 'UNDER ARMOUR'];
 
+        /*
         if (Object.keys(shoes).length !== 0) {
             console.log('not empty')
         } else {
             console.log('empty')
         }
+        */
+
         sneakers.forEach(async (sneaker) => {
             try {
                 const res = await fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=100&brand=${sneaker}`);
                 const shoeObject = await res.json();
 
-                // FILTER OUT RANDOM 8 OUT OF THE 100 CALLED
+                // SHOES OBJECTS WILL BE INSERTED HERE AFTER LITTLE ALGORITHM
                 const shoeItemsArray = [];
-                const generatedIds = [];
 
-                // GENERATING A UNIQUE RANDOM NUMBER
+                // LITTLE ALGORITHM
                 for (let i = 0; i < 100; i++) {
+                    // GENERATE RANDOM NUMBERS
                     const randNum = Math.floor(Math.random() * 100);
-                    if (!generatedIds.includes(randNum)) {
-                        generatedIds.push(randNum);
-                    }
-
-                    const displayImage = shoeObject.results[randNum].media.smallImageUrl;
 
                     // CHECKS TO SEE API OBJ THAT HAS AN IMAGE
+                    const displayImage = shoeObject.results[randNum].media.smallImageUrl;
                     if (displayImage !== noImage && displayImage !== null) {
-                        // THEN MAKES SURE THE OBJ ISN'T REPEATED WHEN RECEIVEING
-                        if ( !shoeItemsArray.includes(shoeObject.results[randNum].id))  {
+                        // THEN MAKES SURE THE OBJ IS STORED ONLY ONCE
+                        if (!shoeItemsArray.includes(shoeObject.results[randNum])) {
                             shoeItemsArray.push(shoeObject.results[randNum]);
                         }
                     };
 
                 }
-
-                // SHORTENS THE ARAAY TO 8
+                // SHORTENS ARRAY INSIDE BELOW TO 8
                 shoeItemsArray.length = 8;
+
                 setShoes(prevState => {
                     return {
                         ...prevState,
