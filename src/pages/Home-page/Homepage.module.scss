@@ -16,16 +16,17 @@
 }
 
 
-.featuredItems {
+.items {
     margin-top: 4rem;
+
+     & > * {
+      &:not(:last-of-type) {
+       padding-bottom: 13rem;
+      }
+     }
 }
 
 .categoryItems {
     @include flex-between;
     flex-wrap: wrap;
-    
-    &:not(:last-of-type) {
-    margin-bottom: 12rem;
-    }
-
 }
