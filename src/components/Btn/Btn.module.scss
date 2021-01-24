@@ -1,0 +1,30 @@
+
+@import "../../utility-styles/main.scss";
+
+.btn {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1rem 2.2rem;
+  color: $color-grey-light;
+  background: $color-primary-2;
+  border-radius: 4px;
+
+
+  &.primary {
+    font-size: 0.96rem;
+    margin-bottom: 4rem;
+
+    @include responsive(1280px) {
+      font-size: 1rem;
+    }
+
+    @include responsive(350px) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &.cart {
+    padding: 1rem 5rem;
+     margin: 3.5rem auto 0;
+  }
+}
