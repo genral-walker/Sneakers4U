@@ -3,7 +3,7 @@ import React from 'react';
 
 import styles from './ShoeCart.module.scss';
 import shoePic from '../../assets/images/shoe-5.png';
-
+import Btn from '../Btn/Btn';
 
 /*
 
@@ -18,7 +18,7 @@ import shoePic from '../../assets/images/shoe-5.png';
 
 export default function ShoeCart(props) {
 
-     const {shoe, retailPrice, media, title} = props;
+     const {retailPrice, media, title} = props;
      const randPrice = Math.floor(Math.random() * (301 - 62)) + 62;
 
     return (
@@ -27,9 +27,11 @@ export default function ShoeCart(props) {
             <img src={media.smallImageUrl ? media.smallImageUrl : shoePic} alt= {title} />
         </div>
 
-        <div>
-            <h3>{shoe}</h3>
-            <p>$ {(retailPrice < 10 || !retailPrice) ? randPrice : retailPrice}</p>
+        <div className={styles.details}>
+            <h3>{title}</h3>
+            <p>${(retailPrice < 10 || !retailPrice) ? randPrice : retailPrice}</p>
+        
+            <Btn type='cart' >Add to cart</Btn>
         </div>
 
         </div>

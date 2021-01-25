@@ -1,19 +1,20 @@
 @import "../../utility-styles/main.scss";
 
 .cover {
-  height: 27rem;
+  height: 26rem;
   flex: 0 0 23%;
   border-radius: 10px;
-  background: $color-white;
-  position: relative;
-  padding: 0 0 3%;
   margin-top: 2.2rem;
+  background: rgba(252, 229, 55, 0.72);
+  box-shadow: 0 3px 5px -1.5px rgba(158, 145, 145, 0.582);
 
-  &::before,
+  /*
+   &::before,
   &::after {
     content: "";
     position: absolute;
     top: 2%;
+    background: inherit;
     bottom: 16px;
     width: 49%;
     z-index: -1;
@@ -28,16 +29,36 @@
     right: 7px;
     box-shadow: 0 10px 20px rgba(158, 145, 145, 0.582);
   }
+  */
 }
 
 .shoePix {
-  height: 60%;
-  border-bottom: 1px solid $color-black;
+  height: 56%;
   @include flex-center;
-
+  background: $color-white;
+  border-radius: 10px 10px 0 0;
 
   img {
     width: 90%;
     height: 88%;
+  }
+}
+
+// font-family: "Raleway", sans-serif;
+
+.details {
+  font-family: "Segoe UI", sans-serif;
+  text-align: left;
+  height: 40%;
+  padding: 1.2rem 1rem 0;
+  position: relative;
+  h3 {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+  p {
+    font-size: 1.3rem;
+    margin: .5rem 0 0;
   }
 }

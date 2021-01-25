@@ -4,15 +4,24 @@ import styles from './Btn.module.scss';
 
 export default function Btn(props) {
 
-    const { children, type, click} = props;
+    const { children, type, click } = props;
 
-   
-    const handleClick = ()=>{
-            click()
+    const checkType = type => {
+        switch (type) {
+            case 'hero':
+                return styles.hero;
+
+            case 'cart':
+                return styles.cart;
+
+            case 'shop':
+                return styles.shop;
+
+            default:
+                return null;
+        }
     };
 
     return <button
-        className={`${styles.btn} ${type === 'primary' ?
-            styles.primary : type === 'cart' ? styles.cart : null}`} onClick={handleClick}>
-        {children}</button>
+        className={`${styles.btn} ${checkType(type)}`}>{children}</button>
 }

@@ -18,7 +18,7 @@ export default function Hero() {
                     <h1 className={styles.h1}>Your Favourite Sneakers</h1>
                     <h3 className={styles.h3}> All in your Favourite sneaker hub </h3>
                
-                    <Btn type='primary'>Explore Our store</Btn>
+                    <Btn type='hero'>Explore Our store</Btn>
                 </div>
               
               

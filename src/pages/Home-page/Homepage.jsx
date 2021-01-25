@@ -22,21 +22,8 @@ export default function Homepage() {
 
     const [shoes, setShoes] = useState({});
 
-    const noImage = "https://stockx-assets.imgix.net/media/New-Product-Placeholder-Default.jpg?fit=fill&bg=FFFFFF&w=300&h=214&auto=format,compress&trim=color&q=90&dpr=2&updated_at=0";
-
-    const callShoes = async (sneaker) => {
-        try {
-            const res = await fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=100&brand=${sneaker}`);
-            const shoeObject = await res.json();
-
-            console.log(shoeObject);
-
-        } catch (error) {
-            console.log(error)
-        }
-    };
-
-    useEffect(() => {
+    const fetchData =()=>{
+        const noImage = "https://stockx-assets.imgix.net/media/New-Product-Placeholder-Default.jpg?fit=fill&bg=FFFFFF&w=300&h=214&auto=format,compress&trim=color&q=90&dpr=2&updated_at=0";
         const sneakers = ['JORDAN', 'NIKE', 'PUMA', 'VANS', 'CONVERSE', 'REEBOK', 'ASICS', 'ADIDAS', 'NEW BALANCE', 'SAUCONY', 'UNDER ARMOUR'];
 
         /*
@@ -59,7 +46,7 @@ export default function Homepage() {
                 for (let i = 0; i < 100; i++) {
                     // GENERATE RANDOM NUMBERS
                     const randNum = Math.floor(Math.random() * 100);
-
+   
                     // CHECKS TO SEE API OBJ THAT HAS AN IMAGE
                     const displayImage = shoeObject.results[randNum].media.smallImageUrl;
                     if (displayImage !== noImage && displayImage !== null) {
@@ -84,7 +71,11 @@ export default function Homepage() {
                 console.log(error)
             }
         });
+    };
 
+
+    useEffect(() => {
+        fetchData()
     }, [])
 
     const message = () => {
@@ -115,7 +106,7 @@ export default function Homepage() {
                                     <Loading />
                             }
 
-                            {shoes.JORDAN && <Btn type='cart' >View all</Btn>}
+                            {shoes.JORDAN && <Btn type='shop' >View all</Btn>}
                         </div>
                     </div>
 
@@ -128,7 +119,7 @@ export default function Homepage() {
                                     <Loading />
                             }
 
-                            {shoes.NIKE && <Btn type='cart' click={message}>View all</Btn>}
+                            {shoes.NIKE && <Btn type='shop' click={message}>View all</Btn>}
                         </div>
                     </div>
 
