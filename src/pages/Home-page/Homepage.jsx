@@ -22,17 +22,11 @@ export default function Homepage() {
 
     const [shoes, setShoes] = useState({});
 
-    const fetchData =()=>{
-        const noImage = "https://stockx-assets.imgix.net/media/New-Product-Placeholder-Default.jpg?fit=fill&bg=FFFFFF&w=300&h=214&auto=format,compress&trim=color&q=90&dpr=2&updated_at=0";
-        const sneakers = ['JORDAN', 'NIKE', 'PUMA', 'VANS', 'CONVERSE', 'REEBOK', 'ASICS', 'ADIDAS', 'NEW BALANCE', 'SAUCONY', 'UNDER ARMOUR'];
+    const fetchData = () => {
 
-        /*
-        if (Object.keys(shoes).length !== 0) {
-            console.log('not empty')
-        } else {
-            console.log('empty')
-        }
-        */
+        const noImage = "https://stockx-assets.imgix.net/media/New-Product-Placeholder-Default.jpg?fit=fill&bg=FFFFFF&w=300&h=214&auto=format,compress&trim=color&q=90&dpr=2&updated_at=0";
+
+        const sneakers = ['JORDAN', 'REEBOK', 'UNDER ARMOUR', 'NIKE', 'ADIDAS', 'NEW BALANCE', 'SAUCONY'];
 
         sneakers.forEach(async (sneaker) => {
             try {
@@ -46,7 +40,7 @@ export default function Homepage() {
                 for (let i = 0; i < 100; i++) {
                     // GENERATE RANDOM NUMBERS
                     const randNum = Math.floor(Math.random() * 100);
-   
+
                     // CHECKS TO SEE API OBJ THAT HAS AN IMAGE
                     const displayImage = shoeObject.results[randNum].media.smallImageUrl;
                     if (displayImage !== noImage && displayImage !== null) {
@@ -73,14 +67,22 @@ export default function Homepage() {
         });
     };
 
-
-    useEffect(() => {
-        fetchData()
-    }, [])
-
-    const message = () => {
+    const satyHello = () => {
         console.log("Hello World!")
     }
+
+    useEffect(() => {
+        /*
+               if (Object.keys(shoes).length !== 0) {
+                   console.log('not empty')
+               } else {
+                   console.log('empty')
+               }
+               */
+
+
+        fetchData()
+    }, []);
 
     return (
         <>
@@ -111,6 +113,32 @@ export default function Homepage() {
                     </div>
 
                     <div>
+                        <HeadingTetiary>REEBOK</HeadingTetiary>
+                        <div className={styles.categoryItems}>
+                            {
+                                shoes.REEBOK ?
+                                    shoes.REEBOK.sneakers.map((props) => <ShoeCart key={props.id} {...props} />) :
+                                    <Loading />
+                            }
+
+                            {shoes.REEBOK && <Btn type='shop' >View all</Btn>}
+                        </div>
+                    </div>
+
+                    <div>
+                        <HeadingTetiary>UNDER ARMOUR</HeadingTetiary>
+                        <div className={styles.categoryItems}>
+                            {
+                                shoes['UNDER ARMOUR'] ?
+                                    shoes['UNDER ARMOUR'].sneakers.map((props) => <ShoeCart key={props.id} {...props} />) :
+                                    <Loading />
+                            }
+
+                            {shoes['UNDER ARMOUR'] && <Btn type='shop' >View all</Btn>}
+                        </div>
+                    </div>
+
+                    <div>
                         <HeadingTetiary >Nike</HeadingTetiary>
                         <div className={styles.categoryItems}>
                             {
@@ -119,11 +147,48 @@ export default function Homepage() {
                                     <Loading />
                             }
 
-                            {shoes.NIKE && <Btn type='shop' click={message}>View all</Btn>}
+                            {shoes.NIKE && <Btn type='shop'>View all</Btn>}
                         </div>
                     </div>
 
+                    <div>
+                        <HeadingTetiary>SAUCONY</HeadingTetiary>
+                        <div className={styles.categoryItems}>
+                            {
+                                shoes.SAUCONY ?
+                                    shoes.SAUCONY.sneakers.map((props) => <ShoeCart key={props.id} {...props} />) :
+                                    <Loading />
+                            }
 
+                            {shoes.SAUCONY && <Btn type='shop' >View all</Btn>}
+                        </div>
+                    </div>
+
+                    <div>
+                        <HeadingTetiary>ADIDAS</HeadingTetiary>
+                        <div className={styles.categoryItems}>
+                            {
+                                shoes.ADIDAS ?
+                                    shoes.ADIDAS.sneakers.map((props) => <ShoeCart key={props.id} {...props} />) :
+                                    <Loading />
+                            }
+
+                            {shoes.ADIDAS && <Btn type='shop' >View all</Btn>}
+                        </div>
+                    </div>
+
+                    <div>
+                        <HeadingTetiary>NEW BALANCE</HeadingTetiary>
+                        <div className={styles.categoryItems}>
+                            {
+                                shoes['NEW BALANCE'] ?
+                                    shoes['NEW BALANCE'].sneakers.map((props) => <ShoeCart key={props.id} {...props} />) :
+                                    <Loading />
+                            }
+
+                            {shoes['NEW BALANCE'] && <Btn type='shop' >View all</Btn>}
+                        </div>
+                    </div>
 
                 </div>
 

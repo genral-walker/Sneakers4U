@@ -12,9 +12,6 @@
 
   &.hero {
     margin-bottom: 4rem;
-    @include responsive(350px) {
-      margin-bottom: 2rem;
-    }
   }
 
   &.cart {

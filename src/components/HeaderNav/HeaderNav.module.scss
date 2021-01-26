@@ -20,9 +20,19 @@
     color: $color-white;
     height: 5.3;
   }
+
+  &.hide {
+    background: inherit;
+  }
+
+  &.show {
+    transition: 0.2s;
+    height: 4.5rem;
+    background: $color-grey-light-2;
+    box-shadow: 0 -15px 32px $color-grey-dark-2;
+    // & * {color: $color-grey-dark-4}
+  }
 }
-
-
 
 .logo {
   font-size: 1.8rem;
@@ -36,8 +46,6 @@
   font-weight: 500;
   color: $color-primary-2;
 }
-
-
 
 .linksContainer {
   @include flex-between;

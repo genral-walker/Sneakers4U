@@ -18,7 +18,7 @@ import Btn from '../Btn/Btn';
 
 export default function ShoeCart(props) {
 
-     const {retailPrice, media, title} = props;
+     const {retailPrice, media, title, shoe} = props;
      const randPrice = Math.floor(Math.random() * (301 - 62)) + 62;
 
     return (
@@ -28,7 +28,7 @@ export default function ShoeCart(props) {
         </div>
 
         <div className={styles.details}>
-            <h3>{title}</h3>
+            <h3>{shoe}</h3>
             <p>${(retailPrice < 10 || !retailPrice) ? randPrice : retailPrice}</p>
         
             <Btn type='cart' >Add to cart</Btn>

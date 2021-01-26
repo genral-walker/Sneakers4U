@@ -1,19 +1,40 @@
 
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './HeaderNav.module.scss';
 
 export default function HeaderNav({ reveal }) {
 
+    const navBar = useRef();
+
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            const body = document.body.getBoundingClientRect();
+            
+            console.log(body)
+
+            if (navBar.current) {
+                if (body.y <= -43) {
+                    navBar.current.classList.add(styles.hide)
+                } else {
+                    navBar.current.classList.remove(styles.hide)
+                }   
+            }
+            
+        });
+    }, []);
+
+    // return () => {window.removeEventListener('scroll')}
+
     {
-        return reveal && <nav className={styles.nav}>
+        return reveal && <nav ref={navBar} className={styles.nav}>
 
             <Link to='/' className={styles.logo}>
                 Sneakers
-    <span className={styles.logo4}>4</span>
-    u
-    </Link>
+                <span className={styles.logo4}>4</span>
+                u
+            </Link>
 
 
             <ul className={styles.linksContainer}>
