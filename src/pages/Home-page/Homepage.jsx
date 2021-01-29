@@ -1,10 +1,11 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { showHero, hideHero } from '../../redux/hero/hero.actions';
 
 import styles from './Homepage.module.scss';
 
 import Loading from '../../components/Loading/Loading';
-
 import Hero from '../../components/Hero/Hero';
 import HeadingSecondary from '../../components/HeadingSecondary/HeadingSecondary';
 import HeadingTetiary from '../../components/HeadingTetiary/HeadingTetiary';
@@ -21,6 +22,8 @@ import Btn from '../../components/Btn/Btn';
 export default function Homepage() {
 
     const [shoes, setShoes] = useState({});
+    const dispatch = useDispatch();
+    const hero = useRef();
 
     const fetchData = () => {
 
@@ -67,35 +70,46 @@ export default function Homepage() {
         });
     };
 
-    const satyHello = () => {
-        console.log("Hello World!")
-    }
+    useEffect(() => {
+        const profileShow = new IntersectionObserver(entries => {
+            entries.forEach(elem => {
+
+                elem.isIntersecting ? dispatch(showHero()) : dispatch(hideHero());
+                // elem.intersectionRatio >= .01 ?  : ;
+            })
+        }
+        );
+        hero.current && profileShow.observe(hero.current);
+
+        // THIS ISN'T WORKING YET WE NEED TO NOT CALL IT EVERYTIME HE COMPONENTS UNMOUNT
+        // INSTAED WE SHOULD CHECK FROM THE REDUX STATE IF WE HAVE ANY SHOES OBJECT
+        if (localStorage.getItem('storageSneakers')) {
+            setShoes(JSON.parse(localStorage.getItem('storageSneakers')))
+        } else {
+          fetchData()
+        }
+
+        return () => { dispatch(hideHero()) }
+    }, []);
 
     useEffect(() => {
-        /*
-               if (Object.keys(shoes).length !== 0) {
-                   console.log('not empty')
-               } else {
-                   console.log('empty')
-               }
-               */
+        if (!Object.keys(shoes).length <= 0) localStorage.setItem('storageSneakers', JSON.stringify(shoes));
 
-
-        fetchData()
-    }, []);
+    }, [shoes])
 
     return (
         <>
-
-            <Hero />
+            <div ref={hero}>
+                <Hero />
+            </div>
 
             <section className={styles.featured}>
+                <div className={styles.blurer}></div>
 
                 <div className={styles.featuredIntro}>
                     <HeadingSecondary>Featured Products</HeadingSecondary>
                     <p>We have whatever your feet are looking for</p>
                 </div>
-
 
                 <div className={styles.items}>
 

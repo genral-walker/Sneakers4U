@@ -1,8 +1,8 @@
+
 @import "../../utility-styles/main.scss";
 
-
 .container {
-   background: url(../../assets/images/sneaker-7.jpg) no-repeat fixed;
+  background: url(../../assets/images/sneaker-7.jpg) no-repeat fixed;
   background-size: cover;
   background-position: center;
 }
@@ -24,7 +24,7 @@
   width: 80%;
   letter-spacing: 0.5rem;
   line-height: 1.5;
-  font-weight: 800;  
+  font-weight: 800;
   color: $color-grey-light-2;
 }
 .h3 {
@@ -35,6 +35,5 @@
   line-height: 1.7;
   color: $color-grey-dark-3;
 }
-
 
 // LEFT

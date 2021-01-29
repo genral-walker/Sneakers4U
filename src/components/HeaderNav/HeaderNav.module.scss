@@ -1,37 +1,30 @@
 @import "../../utility-styles/main.scss";
 
 .nav {
-  background: transparent;
-  height: 6rem;
+  @include flex-between;
+  background: $color-grey-light-2;
   width: 100%;
   padding: 0 6%;
   position: sticky;
   top: 0;
   z-index: 1000;
-  @include flex-between;
+  height: 5.3rem;
+  box-shadow: 0 -15px 32px $color-grey-dark-2; 
+  transition: 0.2s;
   @include responsive(1280px) {
-    height: 6.3rem;
+    // height: 6.3rem;
   }
 
-  // CLASSLISTS
-
-  &.fixed {
-    background: initial;
-    color: $color-white;
-    height: 5.3;
-  }
-
-  &.hide {
+  // NAV INSIDE HERO
+  &.hero {
     background: inherit;
+    box-shadow: none;
+    transition: none;
+    .linksContainer {
+      color: $color-grey-light-4;
+    }
   }
 
-  &.show {
-    transition: 0.2s;
-    height: 4.5rem;
-    background: $color-grey-light-2;
-    box-shadow: 0 -15px 32px $color-grey-dark-2;
-    // & * {color: $color-grey-dark-4}
-  }
 }
 
 .logo {
@@ -50,7 +43,6 @@
 .linksContainer {
   @include flex-between;
   font-size: 1.12rem;
-  color: $color-grey-light-4;
 }
 
 .links {

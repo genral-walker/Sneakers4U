@@ -1,34 +1,17 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
-
 import styles from './HeaderNav.module.scss';
+import { useSelector } from 'react-redux';
 
-export default function HeaderNav({ reveal }) {
 
-    const navBar = useRef();
+export default function HeaderNav({type}) {
 
-    useEffect(() => {
-        window.addEventListener('scroll', () => {
-            const body = document.body.getBoundingClientRect();
-            
-            console.log(body)
+    
+  const isHeroShown = useSelector(state => state.hero.shown);
 
-            if (navBar.current) {
-                if (body.y <= -43) {
-                    navBar.current.classList.add(styles.hide)
-                } else {
-                    navBar.current.classList.remove(styles.hide)
-                }   
-            }
-            
-        });
-    }, []);
-
-    // return () => {window.removeEventListener('scroll')}
-
-    {
-        return reveal && <nav ref={navBar} className={styles.nav}>
+    return (
+        <nav className={`${styles.nav} ${type === 'hero' && styles.hero}`}>
 
             <Link to='/' className={styles.logo}>
                 Sneakers
@@ -45,7 +28,7 @@ export default function HeaderNav({ reveal }) {
 
                 {/* This brings down the category selections list */}
                 <li className={styles.links}>
-                    <Link to='/'>Shop</Link>
+                    <Link to='/away'>Shop</Link>
                 </li>
 
                 <li className={styles.links}>
@@ -68,5 +51,5 @@ export default function HeaderNav({ reveal }) {
         </li> */}
             </ul>
         </nav>
-    };
+    )
 }

@@ -1,26 +1,23 @@
-import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import "./App.scss";
+
+import React from "react";
+import { Switch, Route, useLocation } from "react-router-dom";
 
 /*
 •	Use background position “fixed” to make look more interactive
 •	Dim the image unless the user focus with mouse or whatever, only then will the images fully show
 
-
 --OBjectives
     User should be able to search for their products
       There should be paginations for searchs and just for general
-
-    
-
 */
 
 import HeaderNav from './HeaderNav/HeaderNav';
 import Homepage from '../pages/Home-page/Homepage';
 import Footer from './Footer/Footer';
 
-const AwayPage = ()=> <div>THis is an away Page!!!!</div>;
+const AwayPage = () => <div>THis is an away Page!!!!</div>;
 
 /*
     Check Count.
@@ -46,21 +43,23 @@ const AwayPage = ()=> <div>THis is an away Page!!!!</div>;
     "TODDLER",
     "UNISEX",
     "WOMEN"
-*/ 
+*/
 
-function App() {
+export default function App() {
+
+  const location = useLocation();
   return (
-      <BrowserRouter>
-        <HeaderNav reveal={false}/>
+    <>
+      {location.pathname !== '/' && <HeaderNav />}
+      
+      <Switch>
+        <Route path='/' exact component={Homepage} />
+        <Route path='/away' exact component={AwayPage} />
+      </Switch>
+      <Footer />
+    </>
 
-        <Switch>
-          <Route path='/' exact component= {Homepage} />
-          <Route path='/away' exact component={AwayPage} />
-        </Switch>
-        
-        <Footer />
-      </BrowserRouter>
+
   );
 }
 
-export default App;
