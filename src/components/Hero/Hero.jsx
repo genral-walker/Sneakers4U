@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import styles from './Hero.module.scss';
 
@@ -9,9 +9,17 @@ import Btn from '../Btn/Btn';
 
 export default function Hero() {
 
+    const [state, setstate] = useState();
+    const hero = useRef();
+
+    useEffect(() => {
+        const heroBottom = hero.current.getBoundingClientRect().bottom;
+        setstate(heroBottom);
+    }, [])
+
     return (
-        <section className={styles.container}>
-            <HeaderNav type='hero' />
+        <section ref={hero} className={styles.container}>
+            <HeaderNav type='hero' heroBottom={state}/>
             <header className={styles.header}>
                 <div className={styles.left}>
                     <h1 className={styles.h1}>Your Favourite Sneakers</h1>

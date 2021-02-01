@@ -1,17 +1,34 @@
 
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './HeaderNav.module.scss';
-import { useSelector } from 'react-redux';
 
 
-export default function HeaderNav({type}) {
+export default function HeaderNav({ type, heroBottom }) {
 
-    
-  const isHeroShown = useSelector(state => state.hero.shown);
+    const [scrolled, setScrolled] = useState();
+
+    const handleScroll = () => {
+        const offset = window.pageYOffset;
+        offset > heroBottom ? setScrolled(true) : setScrolled(false);
+    };
+
+    useEffect(() => {
+        if (type === 'hero') {
+            window.addEventListener('scroll', handleScroll);
+
+            return () => window.removeEventListener('scroll', handleScroll);
+        }
+    }, [heroBottom]);
+
+    const animateNav = type => {
+        if (type === 'hero') {
+            return scrolled ? styles.fixed : styles.hero
+        }
+    };
 
     return (
-        <nav className={`${styles.nav} ${type === 'hero' && styles.hero}`}>
+        <nav className={`${styles.nav} ${animateNav(type)}`}>
 
             <Link to='/' className={styles.logo}>
                 Sneakers

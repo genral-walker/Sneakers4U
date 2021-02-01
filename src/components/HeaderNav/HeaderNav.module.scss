@@ -10,7 +10,7 @@
   z-index: 1000;
   height: 5.3rem;
   box-shadow: 0 -15px 32px $color-grey-dark-2; 
-  transition: 0.2s;
+  transition: .3s;
   @include responsive(1280px) {
     // height: 6.3rem;
   }
@@ -23,6 +23,12 @@
     .linksContainer {
       color: $color-grey-light-4;
     }
+  }
+
+  &.fixed {
+    position: fixed;
+    background: $color-grey-light-2;
+    box-shadow: 0 -15px 32px $color-grey-dark-2; 
   }
 
 }

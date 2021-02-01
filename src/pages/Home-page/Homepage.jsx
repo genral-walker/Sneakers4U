@@ -1,7 +1,5 @@
 
-import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { showHero, hideHero } from '../../redux/hero/hero.actions';
+import React, { useEffect, useState } from 'react';
 
 import styles from './Homepage.module.scss';
 
@@ -22,8 +20,6 @@ import Btn from '../../components/Btn/Btn';
 export default function Homepage() {
 
     const [shoes, setShoes] = useState({});
-    const dispatch = useDispatch();
-    const hero = useRef();
 
     const fetchData = () => {
 
@@ -71,37 +67,24 @@ export default function Homepage() {
     };
 
     useEffect(() => {
-        const profileShow = new IntersectionObserver(entries => {
-            entries.forEach(elem => {
-
-                elem.isIntersecting ? dispatch(showHero()) : dispatch(hideHero());
-                // elem.intersectionRatio >= .01 ?  : ;
-            })
-        }
-        );
-        hero.current && profileShow.observe(hero.current);
 
         // THIS ISN'T WORKING YET WE NEED TO NOT CALL IT EVERYTIME HE COMPONENTS UNMOUNT
         // INSTAED WE SHOULD CHECK FROM THE REDUX STATE IF WE HAVE ANY SHOES OBJECT
         if (localStorage.getItem('storageSneakers')) {
             setShoes(JSON.parse(localStorage.getItem('storageSneakers')))
         } else {
-          fetchData()
+            fetchData()
         }
 
-        return () => { dispatch(hideHero()) }
     }, []);
 
     useEffect(() => {
         if (!Object.keys(shoes).length <= 0) localStorage.setItem('storageSneakers', JSON.stringify(shoes));
-
     }, [shoes])
 
     return (
         <>
-            <div ref={hero}>
-                <Hero />
-            </div>
+            <Hero />
 
             <section className={styles.featured}>
                 <div className={styles.blurer}></div>
