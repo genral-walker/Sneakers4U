@@ -6,7 +6,7 @@ import styles from './HeaderNav.module.scss';
 
 export default function HeaderNav({ type, heroBottom }) {
 
-    const [scrolled, setScrolled] = useState();
+    const [scrolled, setScrolled] = useState(false);
 
     const handleScroll = () => {
         const offset = window.pageYOffset;

@@ -2,11 +2,13 @@
 
 .footer {
   padding: 6rem 6% 3rem;
-     background:$color-secondary;
-  
+  background: $color-secondary;
   & * {
     font-family: "Raleway", sans-serif;
     color: $color-grey-dark-4;
+  }
+  @include responsive(900px) {
+    padding: 6rem 3.5% 3rem;
   }
 }
 
@@ -15,50 +17,55 @@
 }
 
 .sections {
+  @include responsive(650px) {
+    flex: 0 50% 50%;
+    margin-bottom: 3rem;
+  }
 }
 
 .linksHeading {
   color: $color-grey-dark-3;
-  font-size: 1.1rem;
+  font-size: 1.13rem;
   letter-spacing: 0.3rem;
   margin-bottom: 1.7rem;
+  @include responsive(1280px) {
+    font-size: 1.2rem;
+  }
 }
-.linksText, .mobileLink {
-  font-size: 0.74rem;
+.linksText {
+  font-size: 0.8rem;
   letter-spacing: 0.2rem;
   font-weight: 600;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
   @include responsive(hover) {
-      color: $color-grey-dark-2;
+    color: $color-grey-dark-2;
+  }
+  @include responsive(1280px) {
+    font-size: 0.9rem;
   }
 }
 
 .linksText {
- &:not(:last-of-type) {
+  &:not(:last-of-type) {
     margin-bottom: 1.2rem;
   }
 }
 
 
-.mobileLinks {
-  @include flex-between;
-  display: none;
-}
-
-.mobileLink {
-
-}
-
 .copyright {
-    @include flex-center; 
-    padding-top: 5rem;
-    p {
-    
-  font-family: "Source Code Pro", monospace;
+  @include flex-center;
+  padding-top: 5rem;
   
-    font-size: .87rem;
+  @include responsive(650px) {
+    padding-top: 1rem;
+  }
+  p {
+    font-family: "Source Code Pro", monospace;
+    font-size: 0.87rem;
     letter-spacing: 0.2rem;
-    }
+    @include responsive(1280px) {
+      font-size: 1rem;
+  }
+  }
 }
-

@@ -18,13 +18,22 @@
 
 
 html {
-  font-size: 81.25%; //12px == 1rem
+  font-size: 81.25%; //13px == 1rem
   scroll-behavior: smooth;
+
   ///// MIN WIDTH RULES GOES IN ASCENDING ORDER //////
-
+  @include responsive(1600px) {
+    font-size: 93.75%;
+  }
+  @include responsive(1800px) {
+    font-size: 100%;
+  }
+  
   //////// MAX-WIDTH RULES -- IN DESCENDING ORDER ////////
-
   @include responsive(1280px) {
+    font-size: 68.75%;
+  }
+  @include responsive(1100px) {
     font-size: 62.5%;
   }
 }

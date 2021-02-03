@@ -87,7 +87,7 @@ export default function Homepage() {
             <Hero />
 
             <section className={styles.featured}>
-                <div className={styles.blurer}></div>
+                {/* <div className={styles.blurer}></div> */}
 
                 <div className={styles.featuredIntro}>
                     <HeadingSecondary>Featured Products</HeadingSecondary>

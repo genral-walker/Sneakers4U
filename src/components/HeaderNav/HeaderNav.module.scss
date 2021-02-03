@@ -14,6 +14,9 @@
   @include responsive(1280px) {
     // height: 6.3rem;
   }
+  @include responsive(900px) {
+    padding: 0 3.5%;
+  }
 
   // NAV INSIDE HERO
   &.hero {

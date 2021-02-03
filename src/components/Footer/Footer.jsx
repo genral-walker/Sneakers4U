@@ -36,7 +36,6 @@ export default function Footer() {
                 </div>
 
                 <div className={styles.sections}>
-
                     <ul>
                         <h3 className={styles.linksHeading}>Company</h3>
                         <li className={styles.linksText}>ABout</li>
@@ -49,7 +48,6 @@ export default function Footer() {
                 </div>
 
                 <div className={styles.sections}>
-
                     <ul>
                         <h3 className={styles.linksHeading}>Resources</h3>
                         <li className={styles.linksText}>our Blog</li>
@@ -60,18 +58,8 @@ export default function Footer() {
                         <li className={styles.linksText}>&nbsp;</li>
                     </ul>
                 </div>
-
             </div>
-
-
-            <div className={styles.mobileLinks}>
-            <p className={styles.mobileLink}>Products</p>
-            <p className={styles.mobileLink}>Support</p>
-            <p className={styles.mobileLink}>Company</p>
-            <p className={styles.mobileLink}>Resources</p>
             
-                
-            </div>
             <div className={styles.copyright}>
                 <p>© All rights reserved Sneakers4u {new Date().getFullYear()} </p>
             </div>
