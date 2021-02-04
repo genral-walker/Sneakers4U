@@ -3,46 +3,24 @@
 .container {
   background: url(../../assets/images/sneaker-7.jpg) no-repeat fixed;
   background-size: cover;
-  background-position: center;
-
-  @include responsive(1400px) {
-    background-position: center 65%;
+  background-position: center -10rem;
+  @include responsive(1024px) {
+    background-position: center -5rem;
   }
-  @include responsive(1800px) {
-    background-position: center 74%;
-  }
-  @include responsive(1280px) {
-    background-position: center 70%;
-  }
-  @include responsive(1200px) {
-    background-position: center 50%;
+  @include responsive(900px) {
+    background-position: unset;
   }
   @include responsive(768px) {
-    background-position: left -1rem;
+    background: linear-gradient(
+          to right top,
+          rgba(245, 207, 84, 0.864),
+          rgba(245, 207, 84, 0.631)
+        )
+        no-repeat fixed,
+      url(../../assets/images/hero-sneaker-small.jpg) no-repeat fixed;
+    background-size: cover;
+    background-position: top;
   }
-  @include responsive(425px) {
-    background-position: -4.5rem -4.5rem;
-  }
-  @include responsive(375px) {
-    background-position: -6rem -4rem;
-  }
-  @include responsive(350px) {
-    background-position: -6rem -4.5rem;
-  }
-  @include responsive(320px) {
-    background-position: -6rem -5rem;
-  }
-  /*
-  @include responsive(720px) {
-    background-image: linear-gradient(
-        50deg,
-        rgb(245, 207, 84) 40%,
-        rgba(245, 207, 84, 0.624)
-      ),
-      url(../../assets/images/sneaker-7-2.jpg);
-  }
-  */ 
-  
 }
 
 .header {
@@ -68,16 +46,7 @@
     flex: 0 0 65%;
   }
   @include responsive(500px) {
-    flex: 0 0 70%;
-  }
-  @include responsive(400px) {
-    flex: 0 0 74%;
-  }
-  @include responsive(375px) {
-    flex: 0 0 80%;
-  }
-  @include responsive(350px) {
-    flex: 0 0 87%;
+    flex: 0 0 100%;
   }
 }
 
