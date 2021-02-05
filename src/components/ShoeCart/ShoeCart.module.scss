@@ -9,11 +9,18 @@
   background: $color-secondary;
   box-shadow: 0 3px 15px -6px $color-grey-dark-2;
   cursor: pointer;
-  
-  transition: transform .3s;
-
+  transition: transform 0.3s;
   @include responsive(hover) {
     transform: translateY(-6px) scale(1.01);
+  }
+  @include responsive(1280px) {
+    height: 27rem;
+  }
+  @include responsive(800px) {
+    flex: 0 0 31%;
+  }
+  @include responsive(600px) {
+    flex: 0 0 45%;
   }
 }
 
@@ -28,7 +35,6 @@
   }
 }
 
-
 .details {
   font-family: "Segoe UI", sans-serif;
   text-align: left;
@@ -42,7 +48,6 @@
   }
   p {
     font-size: 1.3rem;
-    margin: .5rem 0 0;
+    margin: 0.5rem 0 0;
   }
 }
-

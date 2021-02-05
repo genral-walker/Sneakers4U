@@ -52,5 +52,7 @@
 
 .categoryItems {
     @include flex-between;
-    flex-wrap: wrap;
+    @include responsive(600px) {
+      justify-content: space-around;
+    }
 }

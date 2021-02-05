@@ -28,6 +28,12 @@
   @include flex-between;
   padding: 0 6%;
   margin-top: 1rem;
+  @include responsive(1280px) {
+    margin-top: 1.5rem;
+  }
+  @include responsive(1100px) {
+    margin-top: 1.7rem;
+  }
   @include responsive(900px) {
     padding: 0 3.5%;
   }
@@ -61,7 +67,8 @@
     font-size: 4.2rem;
     line-height: 1.43;
   }
-  @include responsive(768px) {
+  @include responsive(425px) {
+    font-weight: 600; //experimental
   }
 }
 .h3 {
@@ -72,7 +79,7 @@
   line-height: 1.7;
   color: $color-grey-dark-4;
   @include responsive(800px) {
-    margin: 1.2rem 0 1.7rem;
+    margin: 1.2rem 0 2rem;
   }
   @include responsive(768px) {
     font-size: 1.2rem;

@@ -20,6 +20,9 @@ import Btn from '../../components/Btn/Btn';
 export default function Homepage() {
 
     const [shoes, setShoes] = useState({});
+    const [length, setLength] = useState();
+
+   
 
     const fetchData = () => {
 
@@ -50,8 +53,9 @@ export default function Homepage() {
                     };
 
                 }
-                // SHORTENS ARRAY INSIDE BELOW TO 8
-                shoeItemsArray.length = 8;
+
+                // SHORTENS ARRAY INSIDE BELOW TO THE HIGHEST POSSIBILITY FIRST...
+                shoeItemsArray.length = 9;
 
                 setShoes(prevState => {
                     return {
@@ -64,23 +68,43 @@ export default function Homepage() {
                 console.log(error)
             }
         });
+        
+        setLength(9);
     };
 
     useEffect(() => {
 
-        // THIS ISN'T WORKING YET WE NEED TO NOT CALL IT EVERYTIME HE COMPONENTS UNMOUNT
-        // INSTAED WE SHOULD CHECK FROM THE REDUX STATE IF WE HAVE ANY SHOES OBJECT
+        // WE SHOULD CHECK FROM THE REDUX STATE IF WE HAVE ANY SHOES OBJECT
         if (localStorage.getItem('storageSneakers')) {
-            setShoes(JSON.parse(localStorage.getItem('storageSneakers')))
+            setShoes(JSON.parse(localStorage.getItem('storageSneakers')));
         } else {
             fetchData()
-        }
+        };
+
+        // RESETS THE LENGTH OF THE SHOES WHEN PAGE RESIZED TO FIT THE PAGE AS SPECIFIED IN CSS
+        const changeShoesLength = () => {
+            if (window.matchMedia('(max-width: 600px)').matches) {
+                setLength(6);
+            } else if (window.matchMedia('(max-width: 800px)').matches) {
+                setLength(9);
+            } else {
+                setLength(8);
+            }
+            
+            console.log(length)
+
+        };
+        window.addEventListener('resize', changeShoesLength);
+        return () => window.removeEventListener('resize', changeShoesLength)
 
     }, []);
 
     useEffect(() => {
-        if (!Object.keys(shoes).length <= 0) localStorage.setItem('storageSneakers', JSON.stringify(shoes));
-    }, [shoes])
+        if (!Object.keys(shoes).length <= 0) {
+            localStorage.setItem('storageSneakers', JSON.stringify(shoes));
+        }
+    }, [shoes]);
+
 
     return (
         <>
@@ -101,7 +125,7 @@ export default function Homepage() {
                         <div className={styles.categoryItems}>
                             {
                                 shoes.JORDAN ?
-                                    shoes.JORDAN.sneakers.map((props) => <ShoeCart key={props.id} {...props} />) :
+                                    shoes.JORDAN.sneakers.map((props, idx) => idx <= length ? <ShoeCart key={props.id} {...props} /> : console.log(length)) :
                                     <Loading />
                             }
 

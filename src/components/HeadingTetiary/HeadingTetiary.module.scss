@@ -3,6 +3,9 @@
 
 .HeadingTetiary {
     font-family: "Raleway", sans-serif;
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     letter-spacing: .3rem;
+    @include responsive(500px) {
+        font-size: 2rem;
+      }
 }

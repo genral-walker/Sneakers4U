@@ -9,6 +9,16 @@
   background: $color-primary-2;
   border-radius: 4px;
   letter-spacing: 2.5px;
+  @include responsive(1280px) {
+    font-size: 1.15rem;
+    padding: 1.1rem 2.5rem;
+  }
+  @include responsive(950px) {
+    font-size: 1rem;
+  }
+  @include responsive(425px) {
+    padding: 1.2rem 2.5rem;
+  }
 
   &.hero {
     margin-bottom: 4rem;
@@ -24,12 +34,24 @@
     position: absolute;
     bottom: 0;
     letter-spacing: 2px;
+    @include responsive(1280px) {
+      font-size: 1rem;
+      padding: 1rem 2.2rem;
+    }
   }
 
   &.shop {
     font-size: 1.2rem;
     padding: .8rem 5rem;
     margin: 3.5rem auto 0;
+    @include responsive(1280px) {
+      font-size: 1.4rem;
+      padding: 1rem 6rem;
+    }
+    @include responsive(425px) {
+      font-size: 1.3rem;
+      padding: .9rem 5rem;
+    }
   }
   
 }
