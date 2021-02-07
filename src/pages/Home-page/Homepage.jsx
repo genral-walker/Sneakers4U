@@ -20,12 +20,19 @@ import Btn from '../../components/Btn/Btn';
 export default function Homepage() {
 
     const [shoes, setShoes] = useState({});
+
     const [length, setLength] = useState();
 
-   
+
+    const changeShoesLength = () => {
+        if (window.matchMedia('(max-width: 800px)').matches) {
+            setLength(6);
+        } else {
+            setLength(8);
+        }
+    };
 
     const fetchData = () => {
-
         const noImage = "https://stockx-assets.imgix.net/media/New-Product-Placeholder-Default.jpg?fit=fill&bg=FFFFFF&w=300&h=214&auto=format,compress&trim=color&q=90&dpr=2&updated_at=0";
 
         const sneakers = ['JORDAN', 'REEBOK', 'UNDER ARMOUR', 'NIKE', 'ADIDAS', 'NEW BALANCE', 'SAUCONY'];
@@ -33,7 +40,8 @@ export default function Homepage() {
         sneakers.forEach(async (sneaker) => {
             try {
                 const res = await fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=100&brand=${sneaker}`);
-                const shoeObject = await res.json();
+                let shoeObject = await res.json();
+                shoeObject = shoeObject.results;
 
                 // SHOES OBJECTS WILL BE INSERTED HERE AFTER LITTLE ALGORITHM
                 const shoeItemsArray = [];
@@ -44,23 +52,22 @@ export default function Homepage() {
                     const randNum = Math.floor(Math.random() * 100);
 
                     // CHECKS TO SEE API OBJ THAT HAS AN IMAGE
-                    const displayImage = shoeObject.results[randNum].media.smallImageUrl;
+                    const displayImage = shoeObject[randNum].media.smallImageUrl;
                     if (displayImage !== noImage && displayImage !== null) {
                         // THEN MAKES SURE THE OBJ IS STORED ONLY ONCE
-                        if (!shoeItemsArray.includes(shoeObject.results[randNum])) {
-                            shoeItemsArray.push(shoeObject.results[randNum]);
+                        if (!shoeItemsArray.includes(shoeObject[randNum])) {
+                            shoeItemsArray.push(shoeObject[randNum]);
                         }
                     };
 
                 }
-
-                // SHORTENS ARRAY INSIDE BELOW TO THE HIGHEST POSSIBILITY FIRST...
+                // SHORTENS ARRAY INSIDE BELOW TO 9... THE HIGHEST POSSILITY WHEN SCREEN IS RESIZED
                 shoeItemsArray.length = 9;
 
                 setShoes(prevState => {
                     return {
                         ...prevState,
-                        [sneaker]: { count: shoeObject.count, sneakers: shoeItemsArray }
+                        [sneaker]: shoeItemsArray
                     }
                 });
 
@@ -68,43 +75,31 @@ export default function Homepage() {
                 console.log(error)
             }
         });
-        
-        setLength(9);
     };
 
-    useEffect(() => {
+    // SETS LENGTH ON FIRST MOUNT ACCORDING TO BRWOSER WIDTH
+    useEffect(() => changeShoesLength(), [])
 
-        // WE SHOULD CHECK FROM THE REDUX STATE IF WE HAVE ANY SHOES OBJECT
-        if (localStorage.getItem('storageSneakers')) {
-            setShoes(JSON.parse(localStorage.getItem('storageSneakers')));
+    // WHERE ITEMS TO DISPLAY IN CART ARE PROCESSED
+    useEffect(() => {
+        if (sessionStorage.getItem('storageSneakers')) {
+            setShoes(JSON.parse(sessionStorage.getItem('storageSneakers')))
         } else {
             fetchData()
-        };
+        }
 
-        // RESETS THE LENGTH OF THE SHOES WHEN PAGE RESIZED TO FIT THE PAGE AS SPECIFIED IN CSS
-        const changeShoesLength = () => {
-            if (window.matchMedia('(max-width: 600px)').matches) {
-                setLength(6);
-            } else if (window.matchMedia('(max-width: 800px)').matches) {
-                setLength(9);
-            } else {
-                setLength(8);
-            }
-            
-            console.log(length)
-
-        };
+        // RESETS LENGTH WHEN PAGE RESIZED TO FIT THE PAGE AS SPECIFIED IN CSS
         window.addEventListener('resize', changeShoesLength);
         return () => window.removeEventListener('resize', changeShoesLength)
 
     }, []);
 
+    // UPDATE SESSION STORAGE TO AVOID LOADING FROM API WHEN COMPONENT REMOUNTS
     useEffect(() => {
         if (!Object.keys(shoes).length <= 0) {
-            localStorage.setItem('storageSneakers', JSON.stringify(shoes));
+            sessionStorage.setItem('storageSneakers', JSON.stringify(shoes));
         }
-    }, [shoes]);
-
+    }, [shoes])
 
     return (
         <>
@@ -125,7 +120,7 @@ export default function Homepage() {
                         <div className={styles.categoryItems}>
                             {
                                 shoes.JORDAN ?
-                                    shoes.JORDAN.sneakers.map((props, idx) => idx <= length ? <ShoeCart key={props.id} {...props} /> : console.log(length)) :
+                                    shoes.JORDAN.map((props, idx) => (idx < length) && <ShoeCart key={props.id} {...props} />) :
                                     <Loading />
                             }
 
@@ -138,7 +133,7 @@ export default function Homepage() {
                         <div className={styles.categoryItems}>
                             {
                                 shoes.REEBOK ?
-                                    shoes.REEBOK.sneakers.map((props) => <ShoeCart key={props.id} {...props} />) :
+                                    shoes.REEBOK.map((props, idx) => (idx < length) && <ShoeCart key={props.id} {...props} />) :
                                     <Loading />
                             }
 
@@ -151,7 +146,7 @@ export default function Homepage() {
                         <div className={styles.categoryItems}>
                             {
                                 shoes['UNDER ARMOUR'] ?
-                                    shoes['UNDER ARMOUR'].sneakers.map((props) => <ShoeCart key={props.id} {...props} />) :
+                                    shoes['UNDER ARMOUR'].map((props, idx) => (idx < length) && <ShoeCart key={props.id} {...props} />) :
                                     <Loading />
                             }
 
@@ -164,7 +159,7 @@ export default function Homepage() {
                         <div className={styles.categoryItems}>
                             {
                                 shoes.NIKE ?
-                                    shoes.NIKE.sneakers.map((props) => <ShoeCart key={props.id} {...props} />) :
+                                    shoes.NIKE.map((props, idx) => (idx < length) && <ShoeCart key={props.id} {...props} />) :
                                     <Loading />
                             }
 
@@ -177,7 +172,7 @@ export default function Homepage() {
                         <div className={styles.categoryItems}>
                             {
                                 shoes.SAUCONY ?
-                                    shoes.SAUCONY.sneakers.map((props) => <ShoeCart key={props.id} {...props} />) :
+                                    shoes.SAUCONY.map((props, idx) => (idx < length) && <ShoeCart key={props.id} {...props} />) :
                                     <Loading />
                             }
 
@@ -190,7 +185,7 @@ export default function Homepage() {
                         <div className={styles.categoryItems}>
                             {
                                 shoes.ADIDAS ?
-                                    shoes.ADIDAS.sneakers.map((props) => <ShoeCart key={props.id} {...props} />) :
+                                    shoes.ADIDAS.map((props, idx) => (idx < length) && <ShoeCart key={props.id} {...props} />) :
                                     <Loading />
                             }
 
@@ -203,7 +198,7 @@ export default function Homepage() {
                         <div className={styles.categoryItems}>
                             {
                                 shoes['NEW BALANCE'] ?
-                                    shoes['NEW BALANCE'].sneakers.map((props) => <ShoeCart key={props.id} {...props} />) :
+                                    shoes['NEW BALANCE'].map((props, idx) => (idx < length) && <ShoeCart key={props.id} {...props} />) :
                                     <Loading />
                             }
 

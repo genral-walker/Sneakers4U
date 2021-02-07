@@ -10,6 +10,9 @@
   @include responsive(900px) {
     padding: 6rem 3.5% 3rem;
   }
+  @include responsive(320px) {
+    padding: 6rem 3% 3rem;
+  }
 }
 
 .container {
@@ -31,6 +34,9 @@
   @include responsive(1280px) {
     font-size: 1.2rem;
   }
+  @include responsive(320px) {
+    font-size: 1.1rem;
+  }
 }
 .linksText {
   font-size: 0.8rem;
@@ -43,6 +49,9 @@
   }
   @include responsive(1280px) {
     font-size: 0.9rem;
+  }
+  @include responsive(320px) {
+    font-size: 0.8rem;
   }
 }
 

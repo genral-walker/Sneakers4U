@@ -11,22 +11,29 @@
       font-size: 3.2rem;
     }
     
-  @include responsive(425px) {
-    font-size: 2.7rem;
+  @include responsive(480px) {
+    font-size: 2.8rem;
   }
-  @include responsive(375px) {
+  @include responsive(425px) {
     font-size: 2.5rem;
   }
-  @include responsive(360px) {
-    font-size: 2.4rem;
+  @include responsive(400px) {
+    font-size: 2.28rem;
+  }
+  @include responsive(375px) {
+    font-size: 2.09rem;
   }
   @include responsive(350px) {
-    font-size: 2.2rem;
-  }
-  @include responsive(330px) {
-    font-size: 2.1rem;
-  }
-  @include responsive(330px) {
+    font-weight: 600;
     font-size: 1.9rem;
+  }
+  @include responsive(330px) {
+    font-size: 1.83rem;
+  }
+  @include responsive(320px) {
+    font-size: 1.65rem;
+  }
+  @include responsive(260px) {
+    font-size: 1.5rem;
   }
   }

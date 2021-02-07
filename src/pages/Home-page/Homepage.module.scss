@@ -39,7 +39,6 @@
   }
 }
 
-
 .items {
     margin-top: 4rem;
 
@@ -52,7 +51,16 @@
 
 .categoryItems {
     @include flex-between;
-    @include responsive(600px) {
+    @include responsive(720px) {
       justify-content: space-around;
+    }
+    @include responsive(500px) {
+      justify-content: space-between;
+    }
+    @include responsive(375px) {
+      justify-content: space-around;
+    }
+    @include responsive(350px) {
+      justify-content: space-between;
     }
 }
