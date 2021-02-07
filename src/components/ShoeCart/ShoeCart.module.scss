@@ -20,6 +20,7 @@
     flex: 0 0 24%;
   }
   @include responsive(800px) {
+    height: 28rem;
     flex: 0 0 32%;
   }
   @include responsive(720px) {
@@ -32,9 +33,7 @@
     flex: 0 0 49%;
   }
   @include responsive(375px) {
-    flex: 0 0 90%;
-  }
-  @include responsive(350px) {
+    height: 30.5rem;
     flex: 0 0 100%;
   }
 }
@@ -69,13 +68,32 @@
   height: 39.5%;
   padding: 1.2rem 1rem 0;
   position: relative;
+  @include responsive(800px) {
+    height: 40.2%;
+  }
+  @include responsive(375px) {
+    height: 39.5%;
+  }
+
   h3 {
     font-size: 1.1rem;
     line-height: 1.5;
     font-weight: 600;
+    @include responsive(800px) {
+      font-size: 1.3rem;
+    }
+    @include responsive(375px) {
+      font-size: 1.5rem;
+    }
   }
   p {
     font-size: 1.3rem;
     margin: 0.5rem 0 0;
+    @include responsive(800px) {
+      font-size: 1.43rem;
+    }
+    @include responsive(375px) {
+      font-size: 1.5rem;
+    }
   }
 }

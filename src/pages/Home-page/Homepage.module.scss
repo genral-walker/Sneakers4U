@@ -57,10 +57,4 @@
     @include responsive(500px) {
       justify-content: space-between;
     }
-    @include responsive(375px) {
-      justify-content: space-around;
-    }
-    @include responsive(350px) {
-      justify-content: space-between;
-    }
 }

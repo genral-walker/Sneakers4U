@@ -67,9 +67,6 @@
     font-size: 4.2rem;
     line-height: 1.43;
   }
-  @include responsive(425px) {
-    font-weight: 600; //experimental
-  }
 }
 .h3 {
   font-size: 1.3rem;

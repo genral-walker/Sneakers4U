@@ -21,10 +21,10 @@
     font-size: 2.28rem;
   }
   @include responsive(375px) {
+    font-weight: 600;
     font-size: 2.09rem;
   }
   @include responsive(350px) {
-    font-weight: 600;
     font-size: 1.9rem;
   }
   @include responsive(330px) {

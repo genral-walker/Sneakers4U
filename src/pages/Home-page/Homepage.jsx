@@ -20,9 +20,7 @@ import Btn from '../../components/Btn/Btn';
 export default function Homepage() {
 
     const [shoes, setShoes] = useState({});
-
     const [length, setLength] = useState();
-
 
     const changeShoesLength = () => {
         if (window.matchMedia('(max-width: 800px)').matches) {
