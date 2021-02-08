@@ -2,6 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './HeaderNav.module.scss';
+import { ReactComponent as UserSvg } from '../../assets/svgs/user.svg';
+import { ReactComponent as CartSvg } from '../../assets/svgs/shopping-cart.svg';
+import { ReactComponent as SearchSvg } from '../../assets/svgs/search.svg';
+
 
 
 export default function HeaderNav({ type, heroBottom }) {
@@ -45,7 +49,9 @@ export default function HeaderNav({ type, heroBottom }) {
 
                 {/* This brings down the category selections list */}
                 <li className={styles.links}>
-                    <Link to='/away'>Shop</Link>
+                    <Link to='/away'>
+                        Search
+                    </Link>
                 </li>
 
                 <li className={styles.links}>
@@ -55,11 +61,14 @@ export default function HeaderNav({ type, heroBottom }) {
              
                 Once logged in. it should show the person's name. else Show login
              */}
-                    <Link to='/'>Login</Link>
+                    <Link to='/'> Login
+                        </Link>
                 </li>
 
                 <li className={styles.links}>
-                    <Link to='/'>Cart</Link>
+                    <span className={styles.cart}>
+                        4
+                        </span>
                 </li>
 
 
@@ -67,6 +76,16 @@ export default function HeaderNav({ type, heroBottom }) {
             <Link to='/' component={Link}>Admin &#9660;</Link>
         </li> */}
             </ul>
+
+            <div className={styles.mobileNav}>
+                <span className={styles.cart}>
+                    4
+                </span>
+
+                <button className={styles.hamburger}>
+                <span className={styles.icon}></span>
+                </button>
+            </div>
         </nav>
     )
 }

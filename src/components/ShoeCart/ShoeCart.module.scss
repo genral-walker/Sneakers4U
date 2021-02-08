@@ -8,11 +8,6 @@
   margin-top: 2.2rem;
   background: $color-secondary;
   box-shadow: 0 3px 15px -6px $color-grey-dark-2;
-  cursor: pointer;
-  transition: transform 0.3s;
-  @include responsive(hover) {
-    transform: translateY(-6px) scale(1.01);
-  }
   @include responsive(1280px) {
     height: 27rem;
   }

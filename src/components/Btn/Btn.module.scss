@@ -9,6 +9,20 @@
   background: $color-primary-2;
   border-radius: 4px;
   letter-spacing: 2.5px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  @include responsive(hover) {
+    transform: translateY(-1.13px) scale(1.013);
+  }
+  &:active {
+    transform: translateY(1px) scale(1);
+  }
+  @include responsive(noHover) {
+    &:active {
+      transform: translateY(1.3px) scale(0.991);
+    }
+  }
+
   @include responsive(1280px) {
     font-size: 1.15rem;
     padding: 1.1rem 2.5rem;
@@ -49,8 +63,8 @@
       padding: 1rem 6rem;
     }
     @include responsive(425px) {
-      font-size: 1.3rem;
-      padding: 1rem 5rem;
+      font-size: 1.4rem;
+      padding: 1.1rem 6rem;
     }
   }
   
