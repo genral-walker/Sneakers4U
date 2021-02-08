@@ -26,8 +26,8 @@
     @include responsive(900px) {
       background-position: unset;
     }
-    @include responsive(768px) {
-      background: linear-gradient(
+    @include responsive(768px) {        
+      background: linear-gradient(       
             to right top,
             rgba(245, 207, 84, 0.864),
             rgba(245, 207, 84, 0.631)
