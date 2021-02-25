@@ -1,16 +1,9 @@
-# Getting Started with Create React App
+# Sneakers4U
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An E-commerce web store for sneakers.
+Built with:
+- React
+- Scss
+- [Swagger Hub API](https://app.swaggerhub.com/apis-docs/tg4solutions/the-sneaker-database/1.0.0#)
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Builds the app for production to the `build` folder.\
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  Veiw the [Live work here](https://sneakers4u.netlify.app/)
