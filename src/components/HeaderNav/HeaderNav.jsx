@@ -6,6 +6,9 @@ import { ReactComponent as UserSvg } from '../../assets/svgs/user.svg';
 import { ReactComponent as CartSvg } from '../../assets/svgs/shopping-cart.svg';
 import { ReactComponent as SearchSvg } from '../../assets/svgs/search.svg';
 
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
 
 
 export default function HeaderNav({ type, heroBottom }) {
@@ -18,6 +21,8 @@ export default function HeaderNav({ type, heroBottom }) {
     };
 
     useEffect(() => {
+        gsap.registerPlugin(ScrollToPlugin);
+
         if (type === 'hero') {
             window.addEventListener('scroll', handleScroll);
 
@@ -31,10 +36,14 @@ export default function HeaderNav({ type, heroBottom }) {
         }
     };
 
+    const scrollToTop = () => {
+        gsap.to(window, { duration: 2.2, ease: 'slow(0.1, 0.1, false)', scrollTo: (0,0)})  
+    }
+
     return (
         <nav className={`${styles.nav} ${animateNav(type)}`}>
 
-            <Link to='/' className={styles.logo}>
+            <Link to='/' className={styles.logo} onClick={scrollToTop}>
                 Sneakers
                 <span className={styles.logo4}>4</span>
                 u
@@ -47,7 +56,7 @@ export default function HeaderNav({ type, heroBottom }) {
                     <Link to='/'>Home</Link>
                 </li>
 
-                {/* This brings down the category selections list */}
+                {/* This brings from aside the category selections list */}
                 <li className={styles.links}>
                     <Link to='/away'>
                         Search
@@ -83,7 +92,7 @@ export default function HeaderNav({ type, heroBottom }) {
                 </span>
 
                 <button className={styles.hamburger}>
-                <span className={styles.icon}></span>
+                    <span className={styles.icon}></span>
                 </button>
             </div>
         </nav>

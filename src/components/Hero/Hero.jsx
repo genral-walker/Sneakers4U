@@ -13,7 +13,7 @@ export default function Hero() {
     const hero = useRef();
 
     useEffect(() => {
-        const heroBottom = hero.current.getBoundingClientRect().bottom;
+        const heroBottom = hero.current.getBoundingClientRect().bottom + 30;
         setstate(heroBottom);
     }, [])
 

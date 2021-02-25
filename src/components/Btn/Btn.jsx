@@ -1,10 +1,18 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Btn.module.scss';
+
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
 
 export default function Btn(props) {
 
-    const { children, type, click } = props;
+    const { children, type } = props;
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollToPlugin);
+    }, [])
 
     const checkType = type => {
         switch (type) {
@@ -22,6 +30,11 @@ export default function Btn(props) {
         }
     };
 
-    return <button
-        className={`${styles.btn} ${checkType(type)}`}>{children}</button>
+    const scrollToMain = () => {
+      type === 'hero' &&  gsap.to(window, { duration: 2.2, ease: 'slow(0.1, 0.1, false)', scrollTo: {y: '#main', offsetY: -1}});
+    };
+
+
+    return <button onClick={scrollToMain} className={`${styles.btn} ${checkType(type)}`}>{children}</button>
+    
 }

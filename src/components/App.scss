@@ -19,7 +19,6 @@
 
 html {
   font-size: 81.25%; //13px == 1rem
-  scroll-behavior: smooth;
 
   ///// MIN WIDTH RULES GOES IN ASCENDING ORDER //////
   @include responsive(1600px) {

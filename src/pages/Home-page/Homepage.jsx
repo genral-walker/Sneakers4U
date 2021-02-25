@@ -1,5 +1,6 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { gsap, ScrollTrigger } from 'gsap/all';
 
 import styles from './Homepage.module.scss';
 
@@ -75,8 +76,26 @@ export default function Homepage() {
         });
     };
 
-    // SETS LENGTH ON FIRST MOUNT ACCORDING TO BRWOSER WIDTH
-    useEffect(() => changeShoesLength(), [])
+    useEffect(() => {
+        // SETS LENGTH ON FIRST MOUNT ACCORDING TO BRWOSER WIDTH
+        changeShoesLength();
+
+        // SCROLL TRIGGER ANIMATION
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '#main',
+                scrub: 1.5,
+                start: 'top 60%',     
+                end: 'top -1',
+                snap: 1,
+                toggleActions: 'restart complete reverse none',
+            }
+        })
+        .to('#blurer', { opacity: 0, display: 'none',})
+        .fromTo('.reveal', { y: 50, autoAlpha:0}, {duration: 1.25, y: 0, autoAlpha: 1, stagger: .4, ease: 'circ.out'}, '+1')
+    }, [])
 
     // WHERE ITEMS TO DISPLAY IN CART ARE PROCESSED
     useEffect(() => {
@@ -103,15 +122,15 @@ export default function Homepage() {
         <>
             <Hero />
 
-            <section className={styles.featured}>
-                {/* <div className={styles.blurer}></div> */}
+            <section id='main' className={styles.featured}>
+                <div id='blurer' className={styles.blurer} ></div>
 
-                <div className={styles.featuredIntro}>
+                <div className={`${styles.featuredIntro} reveal`}>
                     <HeadingSecondary>Featured Products</HeadingSecondary>
                     <p>We have whatever your feet are looking for</p>
                 </div>
 
-                <div className={styles.items}>
+                <div className={`${styles.items} reveal`}>
 
                     <div>
                         <HeadingTetiary>JORDAN</HeadingTetiary>
