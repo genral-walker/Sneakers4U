@@ -1,6 +1,6 @@
 # Sneakers4U
 
-An E-commerce web app.
+An E-commerce web app. (Still In Development)
 Built with:
 - React
 - Scss
