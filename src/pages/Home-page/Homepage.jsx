@@ -35,45 +35,64 @@ export default function Homepage() {
         const noImage = "https://stockx-assets.imgix.net/media/New-Product-Placeholder-Default.jpg?fit=fill&bg=FFFFFF&w=300&h=214&auto=format,compress&trim=color&q=90&dpr=2&updated_at=0";
 
         const sneakers = ['JORDAN', 'REEBOK', 'UNDER ARMOUR', 'NIKE', 'ADIDAS', 'NEW BALANCE', 'SAUCONY'];
+        let sneakerIndex = 0;
 
-        sneakers.forEach(async (sneaker) => {
-            try {
-                const res = await fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=100&brand=${sneaker}`);
-                let shoeObject = await res.json();
-                shoeObject = shoeObject.results;
+        const interval = setInterval( async () => {
 
-                // SHOES OBJECTS WILL BE INSERTED HERE AFTER LITTLE ALGORITHM
-                const shoeItemsArray = [];
+            if (sneakerIndex <= 6) {
 
-                // LITTLE ALGORITHM
-                for (let i = 0; i < 100; i++) {
-                    // GENERATE RANDOM NUMBERS
-                    const randNum = Math.floor(Math.random() * 100);
+                try {
 
-                    // CHECKS TO SEE API OBJ THAT HAS AN IMAGE
-                    const displayImage = shoeObject[randNum].media.smallImageUrl;
-                    if (displayImage !== noImage && displayImage !== null) {
-                        // THEN MAKES SURE THE OBJ IS STORED ONLY ONCE
-                        if (!shoeItemsArray.includes(shoeObject[randNum])) {
-                            shoeItemsArray.push(shoeObject[randNum]);
+                    const res = await fetch(`https://v1-sneakers.p.rapidapi.com/v1/sneakers?limit=100&brand=${sneakers[sneakerIndex]}`, {
+                        "method": "GET",
+                        "headers": {
+                            "x-rapidapi-key": "23ab0120a7msh99366a4689e2f5fp1091a6jsn467adc1b6969",
+                            "x-rapidapi-host": "v1-sneakers.p.rapidapi.com"
                         }
-                    };
-
-                }
-                // SHORTENS ARRAY INSIDE BELOW TO 9... THE HIGHEST POSSILITY WHEN SCREEN IS RESIZED
-                shoeItemsArray.length = 9;
-
-                setShoes(prevState => {
-                    return {
-                        ...prevState,
-                        [sneaker]: shoeItemsArray
+                    });
+        
+                    let shoeObject = await res.json();
+                    console.log(shoeObject);
+                    shoeObject = shoeObject.results;
+        
+                    // SHOES OBJECTS WILL BE INSERTED HERE AFTER LITTLE ALGORITHM
+                    const shoeItemsArray = [];
+        
+                    // LITTLE ALGORITHM
+                    for (let i = 0; i < 100; i++) {
+                        // GENERATE RANDOM NUMBERS
+                        const randNum = Math.floor(Math.random() * 100);
+        
+                        // CHECKS TO SEE API OBJ THAT HAS AN IMAGE
+                        const displayImage = shoeObject[randNum].media.smallImageUrl;
+                        if (displayImage !== noImage && displayImage !== null) {
+                            // THEN MAKES SURE THE OBJ IS STORED ONLY ONCE
+                            if (!shoeItemsArray.includes(shoeObject[randNum])) {
+                                shoeItemsArray.push(shoeObject[randNum]);
+                            }
+                        };
+        
                     }
-                });
+                    // SHORTENS ARRAY INSIDE BELOW TO 9... THE HIGHEST POSSILITY WHEN SCREEN IS RESIZED
+                    shoeItemsArray.length = 9;
+        
+                    setShoes(prevState => {
+                        return {
+                            ...prevState,
+                            [sneakers[sneakerIndex]]: shoeItemsArray
+                        }
+                    });
+        
+                } catch (error) {
+                    console.log(error)   
+                }
 
-            } catch (error) {
-                console.log(error)
+                sneakerIndex++
+            } else {
+                clearInterval(interval)
             }
-        });
+
+        }, 2500);
     };
 
     useEffect(() => {
@@ -87,14 +106,14 @@ export default function Homepage() {
             scrollTrigger: {
                 trigger: '#main',
                 scrub: 1.5,
-                start: 'top 60%',     
+                start: 'top 60%',
                 end: 'top -1',
                 snap: 1,
                 toggleActions: 'restart complete reverse none',
             }
         })
-        .to('#blurer', { opacity: 0, display: 'none',})
-        .fromTo('.reveal', { y: 50, autoAlpha:0}, {duration: 1.25, y: 0, autoAlpha: 1, stagger: .4, ease: 'circ.out'}, '+1')
+            .to('#blurer', { opacity: 0, display: 'none', })
+            .fromTo('.reveal', { y: 50, autoAlpha: 0 }, { duration: 1.25, y: 0, autoAlpha: 1, stagger: .4, ease: 'circ.out' }, '+1')
     }, [])
 
     // WHERE ITEMS TO DISPLAY IN CART ARE PROCESSED
@@ -107,7 +126,7 @@ export default function Homepage() {
 
         // RESETS LENGTH WHEN PAGE RESIZED TO FIT THE PAGE AS SPECIFIED IN CSS
         window.addEventListener('resize', changeShoesLength);
-        
+
         return () => window.removeEventListener('resize', changeShoesLength)
 
     }, []);

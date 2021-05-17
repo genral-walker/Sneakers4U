@@ -16,7 +16,7 @@ export default function Btn(props) {
 
         if (type === 'hero') {
         
-        tlCompleted && gsap.to('#btn', {duration: '.5', opacity: 1,  ease: 'Power3.out'})
+        tlCompleted && gsap.to('#btn', {duration: '.4', opacity: 1,  ease: 'Power3.out'})
 
         }
     }, [tlCompleted])
