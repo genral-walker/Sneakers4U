@@ -35,6 +35,7 @@
   }
 
   &.hero {
+    opacity: 0;
     margin-bottom: 4rem;
     @include responsive(900px) {
       margin-bottom: 2.7rem;

@@ -107,6 +107,7 @@ export default function Homepage() {
 
         // RESETS LENGTH WHEN PAGE RESIZED TO FIT THE PAGE AS SPECIFIED IN CSS
         window.addEventListener('resize', changeShoesLength);
+        
         return () => window.removeEventListener('resize', changeShoesLength)
 
     }, []);

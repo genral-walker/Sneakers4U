@@ -8,11 +8,18 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 export default function Btn(props) {
 
-    const { children, type } = props;
+    const { children, type, tlCompleted } = props;
 
     useEffect(() => {
+        
         gsap.registerPlugin(ScrollToPlugin);
-    }, [])
+
+        if (type === 'hero') {
+        
+        tlCompleted && gsap.to('#btn', {duration: '.5', opacity: 1,  ease: 'Power3.out'})
+
+        }
+    }, [tlCompleted])
 
     const checkType = type => {
         switch (type) {
@@ -35,6 +42,6 @@ export default function Btn(props) {
     };
 
 
-    return <button onClick={scrollToMain} className={`${styles.btn} ${checkType(type)}`}>{children}</button>
+    return  <button onClick={scrollToMain} className={`${styles.btn} ${checkType(type)}`} id='btn'>{children}</button>
     
 }

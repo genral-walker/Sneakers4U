@@ -37,6 +37,14 @@
   @include responsive(900px) {
     padding: 0 3.5%;
   }
+  span {
+    display: inline-flex;
+  }
+  .lineOuter {
+    overflow-y: hidden;
+    width: max-content;
+    height: max-content;
+  }
 }
 
 .left {
@@ -56,7 +64,7 @@
   }
 }
 
-.h1 {
+.h1, .h1 span {
   font-size: 4.4rem;
   width: 80%;
   letter-spacing: 0.5rem;
@@ -65,6 +73,9 @@
   color: $color-grey-light-2;
   @include responsive(900px) {
     font-size: 4.2rem;
+    line-height: 1.43;
+  } @include responsive(300px) {
+    font-size: 4rem;
     line-height: 1.43;
   }
 }
@@ -75,11 +86,17 @@
   font-weight: 600;
   line-height: 1.7;
   color: $color-grey-dark-4;
+  span {
+    letter-spacing: inherit;
+  }
   @include responsive(800px) {
     margin: 1.2rem 0 2rem;
   }
   @include responsive(768px) {
     font-size: 1.2rem;
+  }
+  @include responsive(375px) {
+    width: 90% !important;
   }
 }
 

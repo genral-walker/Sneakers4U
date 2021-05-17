@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './HeaderNav.module.scss';
 import { ReactComponent as UserSvg } from '../../assets/svgs/user.svg';
 import { ReactComponent as CartSvg } from '../../assets/svgs/shopping-cart.svg';
@@ -11,9 +11,11 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 
 
-export default function HeaderNav({ type, heroBottom }) {
+export default function HeaderNav({ type, heroBottom, tl}) {
 
     const [scrolled, setScrolled] = useState(false);
+    const location = useLocation();
+
 
     const handleScroll = () => {
         const offset = window.pageYOffset;
@@ -24,6 +26,9 @@ export default function HeaderNav({ type, heroBottom }) {
         gsap.registerPlugin(ScrollToPlugin);
 
         if (type === 'hero') {
+
+            // tl.from('#nav', {y:'-100%', ease: 'Power3.out'})
+
             window.addEventListener('scroll', handleScroll);
 
             return () => window.removeEventListener('scroll', handleScroll);
@@ -41,7 +46,7 @@ export default function HeaderNav({ type, heroBottom }) {
     }
 
     return (
-        <nav className={`${styles.nav} ${animateNav(type)}`}>
+        <nav className={`${styles.nav} ${animateNav(type)}`} id='nav'>
 
             <Link to='/' className={styles.logo} onClick={scrollToTop}>
                 Sneakers
@@ -59,7 +64,7 @@ export default function HeaderNav({ type, heroBottom }) {
                 {/* This brings from aside the category selections list */}
                 <li className={styles.links}>
                     <Link to='/away'>
-                        Search
+                        {location.pathname === '/' ? 'Shop' : 'Search'}
                     </Link>
                 </li>
 
