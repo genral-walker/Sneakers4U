@@ -43,7 +43,7 @@ export default function Homepage() {
 
                 try {
 
-                    const res = await fetch(`https://v1-sneakers.p.rapidapi.com/v1/sneakers?limit=100&brand=${sneakers[sneakerIndex]}`, {
+                    const res = await fetch(`https://v1-sneakers.p.rapidapi.com/v1/sneakers?limit=10&brand=${sneakers[sneakerIndex]}`, {
                         "method": "GET",
                         "headers": {
                             "x-rapidapi-key": "23ab0120a7msh99366a4689e2f5fp1091a6jsn467adc1b6969",
@@ -55,31 +55,12 @@ export default function Homepage() {
                     console.log(shoeObject);
                     shoeObject = shoeObject.results;
         
-                    // SHOES OBJECTS WILL BE INSERTED HERE AFTER LITTLE ALGORITHM
-                    const shoeItemsArray = [];
-        
-                    // LITTLE ALGORITHM
-                    for (let i = 0; i < 100; i++) {
-                        // GENERATE RANDOM NUMBERS
-                        const randNum = Math.floor(Math.random() * 100);
-        
-                        // CHECKS TO SEE API OBJ THAT HAS AN IMAGE
-                        const displayImage = shoeObject[randNum].media.smallImageUrl;
-                        if (displayImage !== noImage && displayImage !== null) {
-                            // THEN MAKES SURE THE OBJ IS STORED ONLY ONCE
-                            if (!shoeItemsArray.includes(shoeObject[randNum])) {
-                                shoeItemsArray.push(shoeObject[randNum]);
-                            }
-                        };
-        
-                    }
-                    // SHORTENS ARRAY INSIDE BELOW TO 9... THE HIGHEST POSSILITY WHEN SCREEN IS RESIZED
-                    shoeItemsArray.length = 9;
-        
+                    console.log(shoeObject);
+
                     setShoes(prevState => {
                         return {
                             ...prevState,
-                            [sneakers[sneakerIndex]]: shoeItemsArray
+                            [sneakers[sneakerIndex]]: shoeObject
                         }
                     });
         
@@ -92,7 +73,7 @@ export default function Homepage() {
                 clearInterval(interval)
             }
 
-        }, 2500);
+        }, 1500);
     };
 
     useEffect(() => {
